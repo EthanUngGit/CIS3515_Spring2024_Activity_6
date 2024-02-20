@@ -13,7 +13,5 @@ class DisplayActivity : AppCompatActivity() {
         with (findViewById<TextView>(R.id.lyricsDisplayTextView)) {
 
         }
-
-
     }
 }
