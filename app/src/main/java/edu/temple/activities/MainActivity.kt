@@ -1,5 +1,6 @@
 package edu.temple.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +8,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
+import java.nio.channels.SelectionKey
+
+const val SIZE_KEY = "size"
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,10 +25,11 @@ class MainActivity : AppCompatActivity() {
         Log.d("Array values", textSizes.contentToString())
 
         with (findViewById<RecyclerView>(R.id.textSizeSelectorRecyclerView)) {
-
             // TODO Step 2: Implement lambda body to launch new activity and pass value
-            adapter = TextSizeAdapter(textSizes){
-
+            adapter = TextSizeAdapter(textSizes){selectedTextSize ->
+                val launchIntent = Intent(this@MainActivity, DisplayActivity::class.java)
+                launchIntent.putExtra(SIZE_KEY, selectedTextSize)
+                startActivity(launchIntent)
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }

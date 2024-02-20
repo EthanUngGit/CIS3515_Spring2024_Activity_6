@@ -11,7 +11,6 @@ class DisplayActivity : AppCompatActivity() {
 
         // TODO Step 3: Extract transferred value and use for lyricsDisplayView text size
         with (findViewById<TextView>(R.id.lyricsDisplayTextView)) {
-
         }
     }
 }
